@@ -7,6 +7,8 @@ export const useStore = create((set) => ({
   waveAmplitude: 0.1,
   foamDepth: 0.01,
   audioEnabled: false,
+  interiorOpen: false,
+  setInteriorOpen: (open) => set(() => ({ interiorOpen: open })),
 
   setAudioEnabled: (enabled) => set(() => ({ audioEnabled: enabled })),
   setReady: (ready) => set(() => ({ ready: ready }))

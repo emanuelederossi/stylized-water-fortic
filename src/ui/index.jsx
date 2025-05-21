@@ -6,7 +6,7 @@ export const UI = () => {
     <div className={s.ui}>
       <div className={s.top}>
         <Sound />
-      </div>
+      </div>      
     </div>
   )
 }
