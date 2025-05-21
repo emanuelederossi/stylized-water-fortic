@@ -18,7 +18,7 @@ export function Terrain() {
   const foamDepth = useStore((state) => state.foamDepth)
 
   // Load model
-  const { nodes } = useGLTF("/models/terrain.glb")
+  const { nodes } = useGLTF("/models/terrain2.glb")
 
   // Interactive color parameters
   const { SAND_BASE_COLOR, GRASS_BASE_COLOR, UNDERWATER_BASE_COLOR } =
@@ -67,8 +67,17 @@ export function Terrain() {
   })
 
   return (
-    <group dispose={null}>
-      <mesh geometry={nodes.plane.geometry} receiveShadow>
+    <group dispose={null} position={[50, 0, 50]}>
+      {/* Big plane as a ground or backdrop */}
+      <mesh
+        rotation-x={-Math.PI / 2}
+        position={[0, -0.2, 0]} // Positioned further down
+        receiveShadow
+      >
+        <planeGeometry args={[1000, 1000]} />
+        <meshStandardMaterial color={UNDERWATER_BASE_COLOR}/>
+      </mesh>
+      <mesh geometry={nodes.Plane.geometry} scale={[200, 250, 200]} receiveShadow>
         <CustomShaderMaterial
           ref={materialRef}
           baseMaterial={THREE.MeshStandardMaterial}
@@ -99,4 +108,4 @@ export function Terrain() {
   )
 }
 
-useGLTF.preload("/models/terrain.glb")
+useGLTF.preload("/models/terrain2.glb")

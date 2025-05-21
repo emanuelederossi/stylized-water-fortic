@@ -7,9 +7,9 @@ export function Colosseum() {
   return (
     <group dispose={null}>
       <group scale={0.02}
-        position={[0.2, 1.7, 0.2]}
+        position={[0.2, 1.8, 0.2]}
       >
-        <group rotation={[-Math.PI / 2, -Math.PI / 64, 0]} scale={77.824}>
+        <group rotation={[-Math.PI / 1.9, Math.PI / 64, 0]} scale={77.824}>
           <Html
           position={[0, 0, 3]}
             as="div"
@@ -28,6 +28,7 @@ export function Colosseum() {
                   justifyContent: 'center',
                   flexDirection: 'row',
                   flexWrap: 'nowrap',
+                  fontFamily: "JetBrains Mono",
                   pointerEvents: 'visible',
                   width: 'max-content',
                   // maxWidth: '2.36em',
@@ -40,7 +41,7 @@ export function Colosseum() {
                   border: '2px solid #e1e5e1',
                   cursor: 'pointer',
             }}
-            >visit room 1</div>
+            >VISIT ROOM 1</div>
           </Html>
           <mesh
             castShadow

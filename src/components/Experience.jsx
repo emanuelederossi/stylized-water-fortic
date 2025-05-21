@@ -30,16 +30,16 @@ export const Experience = () => {
         />
       </directionalLight>
 
-      <Audio />
+      {/* <Audio /> */}
 
       <CameraControls
         maxPolarAngle={Math.PI / 2.2}
-        maxDistance={80}
+        maxDistance={200}
         minDistance={15}
       />
 
       <color attach="background" args={[BACKGROUND]} />
-      <fog attach="fog" args={[BACKGROUND, 120, 150]} />
+      <fog attach="fog" args={[BACKGROUND, 300, 350]} />
 
       <Scene />
     </>

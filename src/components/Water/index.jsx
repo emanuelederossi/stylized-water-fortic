@@ -102,7 +102,7 @@ export const Water = () => {
 
   return (
     <mesh rotation-x={-Math.PI / 2} position-y={WATER_LEVEL}>
-      <planeGeometry args={[256, 256]} />
+      <planeGeometry args={[256*2, 256*2]} />
       <CustomShaderMaterial
         ref={materialRef}
         baseMaterial={THREE.MeshStandardMaterial}

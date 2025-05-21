@@ -40,7 +40,7 @@ function App() {
             <AdaptiveDpr pixelated />
           </Canvas>
 
-          <UI />
+          {/* <UI /> */}
         </div>
       </Suspense>
     </>
