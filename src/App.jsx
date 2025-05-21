@@ -35,7 +35,7 @@ function App() {
           </Modal>
           <Leva hidden={!ready || !showLeva} />
 
-          <Canvas camera={{ position: [30, 10, -30], fov: 35 }} shadows>
+          <Canvas camera={{ position: [-10, 13, 40], fov: 35 }} shadows>
             <Experience />
             <AdaptiveDpr pixelated />
           </Canvas>

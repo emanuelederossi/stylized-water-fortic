@@ -9,7 +9,7 @@ export function Colosseum() {
       <group scale={0.02}
         position={[0.2, 1.8, 0.2]}
       >
-        <group rotation={[-Math.PI / 1.9, Math.PI / 64, 0]} scale={77.824}>
+        <group rotation={[-Math.PI / 1.9, Math.PI / 64, -Math.PI / 2]} scale={77.824}>
           <Html
           position={[0, 0, 3]}
             as="div"
