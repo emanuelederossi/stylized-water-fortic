@@ -1,3 +1,4 @@
+import { Colosseum } from "../Colosseum"
 import { Rocks } from "../Rocks"
 import { Terrain } from "../Terrain"
 import { Water } from "../Water"
@@ -8,6 +9,7 @@ export const Scene = () => {
       <Rocks />
       <Terrain />
       <Water />
+    <Colosseum  />
     </>
   )
 }

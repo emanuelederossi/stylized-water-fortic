@@ -47,7 +47,7 @@ void main() {
     vec3 alpha = vec3(1.0);
 
     // Invert texture size
-    float textureSize = 100.0 - uTextureSize;
+    float textureSize = 250.0 - uTextureSize;
 
     // Generate noise for the base texture
     float noiseBase = snoise(csm_vUv * (textureSize * 2.8) + sin(uTime * 0.3));

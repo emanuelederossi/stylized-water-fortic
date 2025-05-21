@@ -113,7 +113,7 @@ export const Water = () => {
           uColorFar: { value: COLOR_FAR },
           uWaveSpeed: { value: WAVE_SPEED },
           uWaveAmplitude: { value: WAVE_AMPLITUDE },
-          uTextureSize: { value: TEXTURE_SIZE }
+          uTextureSize: { value: TEXTURE_SIZE * 0.01 }
         }}
         color={COLOR_BASE_NEAR}
         transparent
