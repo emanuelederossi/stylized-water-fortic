@@ -75,9 +75,13 @@ export function Terrain() {
         receiveShadow
       >
         <planeGeometry args={[1000, 1000]} />
-        <meshStandardMaterial color={UNDERWATER_BASE_COLOR}/>
+        <meshStandardMaterial color={UNDERWATER_BASE_COLOR} />
       </mesh>
-      <mesh geometry={nodes.Plane.geometry} scale={[200, 250, 200]} receiveShadow>
+      <mesh
+        geometry={nodes.Plane.geometry}
+        scale={[200, 250, 200]}
+        receiveShadow
+      >
         <CustomShaderMaterial
           ref={materialRef}
           baseMaterial={THREE.MeshStandardMaterial}
