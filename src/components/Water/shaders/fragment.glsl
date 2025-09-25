@@ -75,7 +75,7 @@ void main() {
     vec3 combinedEffect = min(waveEffect + foam, 1.0);
 
     // Applying a gradient based on distance
-    float vignette = length(csm_vUv - 0.5) * 1.5;
+    float vignette = length(csm_vUv - 0.5) * 0.8;
     vec3 baseEffect = smoothstep(0.1, 0.3, vec3(vignette));
     vec3 baseColor = mix(finalColor, uColorFar, baseEffect);
 

@@ -1,18 +1,18 @@
 import clsx from "clsx"
 import { Suspense } from "react"
 import { Canvas } from "@react-three/fiber"
-import { AdaptiveDpr } from "@react-three/drei"
+import { AdaptiveDpr, KeyboardControls } from "@react-three/drei"
 import { Leva } from "leva"
 
 import { Interior } from "./components/Interior"
 import { Experience } from "./components/Experience"
-import { UI } from "./ui"
 import { Loading } from "./ui/Loading"
 
 import { useStore } from "./hooks/useStore"
 
 import s from "./ui/ui.module.scss"
 import Modal from "./components/Modal"
+import { CameraAndKeyControlsEvent } from "./components/Controls"
 
 function App() {
   const ready = useStore((state) => state.ready)
@@ -34,13 +34,22 @@ function App() {
             <Interior />
           </Modal>
           <Leva hidden={!ready || !showLeva} />
-
-          <Canvas camera={{ position: [-10, 13, 40], fov: 35 }} shadows>
-            <Experience />
-            <AdaptiveDpr pixelated />
-          </Canvas>
-
-          {/* <UI /> */}
+          <KeyboardControls
+            map={[
+              { name: "forward", keys: ["ArrowUp", "w", "W"] },
+              { name: "backward", keys: ["ArrowDown", "s", "S"] },
+              { name: "left", keys: ["ArrowLeft", "a", "A"] },
+              { name: "right", keys: ["ArrowRight", "d", "D"] },
+              { name: "jump", keys: ["Space"] },
+              { name: "escape", keys: ["Escape"] }
+            ]}
+          >
+            <Canvas camera={{ position: [-10, 13, 40], fov: 35 }} shadows>
+              <CameraAndKeyControlsEvent />
+              <Experience />
+              <AdaptiveDpr pixelated />
+            </Canvas>
+          </KeyboardControls>
         </div>
       </Suspense>
     </>

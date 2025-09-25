@@ -26,8 +26,8 @@ export const Water = () => {
     TEXTURE_SIZE,
     FOAM_DEPTH
   } = useControls("Water", {
-    COLOR_BASE_NEAR: { value: "#00fccd", label: "Near" },
-    COLOR_BASE_FAR: { value: "#1ceeff", label: "Far" },
+    COLOR_BASE_NEAR: { value: "#4c86be", label: "Near" },
+    COLOR_BASE_FAR: { value: "#0048b4", label: "Far" },
     WATER_LEVEL: {
       value: waterLevel,
       min: 0.5,
@@ -50,7 +50,7 @@ export const Water = () => {
       label: "Wave Amplitude"
     },
     TEXTURE_SIZE: {
-      value: 45,
+      value: 1,
       min: 1,
       max: 80,
       step: 1,
@@ -73,7 +73,6 @@ export const Water = () => {
 
   // Material
   const materialRef = useRef()
-
   // Update shader uniforms whenever control values change
   useEffect(() => {
     if (!materialRef.current) return
@@ -102,7 +101,7 @@ export const Water = () => {
 
   return (
     <mesh rotation-x={-Math.PI / 2} position-y={WATER_LEVEL}>
-      <planeGeometry args={[256*2, 256*2]} />
+      <planeGeometry args={[256 * 4, 256 * 4]} />
       <CustomShaderMaterial
         ref={materialRef}
         baseMaterial={THREE.MeshStandardMaterial}

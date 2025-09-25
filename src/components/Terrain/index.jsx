@@ -18,14 +18,14 @@ export function Terrain() {
   const foamDepth = useStore((state) => state.foamDepth)
 
   // Load model
-  const { nodes } = useGLTF("/models/terrain2.glb")
+  const { nodes } = useGLTF("/models/base5.glb")
 
   // Interactive color parameters
   const { SAND_BASE_COLOR, GRASS_BASE_COLOR, UNDERWATER_BASE_COLOR } =
     useControls("Terrain", {
       SAND_BASE_COLOR: { value: "#ff9900", label: "Sand" },
-      GRASS_BASE_COLOR: { value: "#85a02b", label: "Grass" },
-      UNDERWATER_BASE_COLOR: { value: "#118a4f", label: "Underwater" }
+      GRASS_BASE_COLOR: { value: "#819d24", label: "Grass" },
+      UNDERWATER_BASE_COLOR: { value: "#205200", label: "Underwater" }
     })
 
   // Convert color hex values to Three.js Color objects
@@ -79,6 +79,7 @@ export function Terrain() {
       </mesh>
       <mesh
         geometry={nodes.Plane.geometry}
+        position={[0, -2, 0]}
         scale={[200, 250, 200]}
         receiveShadow
       >
@@ -86,6 +87,8 @@ export function Terrain() {
           ref={materialRef}
           baseMaterial={THREE.MeshStandardMaterial}
           color={SAND_BASE_COLOR}
+          metalness={0.5}
+          roughness={1}
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
           uniforms={{
@@ -100,14 +103,14 @@ export function Terrain() {
         />
       </mesh>
 
-      <mesh
+      {/* <mesh
         rotation-x={-Math.PI / 2}
         position={[0, -0.01, 0]} // Moved it down slightly to avoid the odd visual glitch from plane collision
         receiveShadow
       >
         <planeGeometry args={[256, 256]} />
         <meshStandardMaterial color={UNDERWATER_BASE_COLOR} />
-      </mesh>
+      </mesh> */}
     </group>
   )
 }

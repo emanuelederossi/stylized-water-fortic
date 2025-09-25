@@ -1,13 +1,12 @@
-import { CameraControls, Environment } from "@react-three/drei"
+import { Environment } from "@react-three/drei"
 import { useControls } from "leva"
 
 import { Scene } from "./Scene"
-import { Audio } from "./Audio"
 
 export const Experience = () => {
   // Interactive color parameters
   const { BACKGROUND } = useControls("Sky", {
-    BACKGROUND: { value: "#fcffdc", label: "Background" }
+    BACKGROUND: { value: "#86c2eb", label: "Background" }
   })
 
   return (
@@ -32,14 +31,8 @@ export const Experience = () => {
 
       {/* <Audio /> */}
 
-      <CameraControls
-        maxPolarAngle={Math.PI / 2.2}
-        maxDistance={200}
-        minDistance={15}
-      />
-
       <color attach="background" args={[BACKGROUND]} />
-      <fog attach="fog" args={[BACKGROUND, 300, 350]} />
+      <fog attach="fog" args={[BACKGROUND, 400, 500]} />
 
       <Scene />
     </>

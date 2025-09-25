@@ -35,6 +35,24 @@ export function Rocks() {
   // Material
   const materialRef = useRef()
 
+  // Force shader recompilation when GLSL source changes (e.g. during HMR)
+  useEffect(() => {
+    const material = materialRef.current
+    if (!material) return
+
+    if (
+      material.vertexShader === vertexShader &&
+      material.fragmentShader === fragmentShader
+    ) {
+      return
+    }
+
+    material.vertexShader = vertexShader
+    material.fragmentShader = fragmentShader
+    material.customProgramCacheKey = () => `${vertexShader}:${fragmentShader}`
+    material.needsUpdate = true
+  }, [vertexShader, fragmentShader])
+
   // Update shader uniforms whenever control values change
   useEffect(() => {
     if (!materialRef.current) return

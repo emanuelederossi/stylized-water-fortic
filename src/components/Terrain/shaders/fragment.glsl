@@ -26,14 +26,14 @@ void main() {
     // It transitions in fully over a small height range.
     // uSandColor is assumed to be a uniform vec3, similar to uGrassColor.
     float sandStartHeight = uWaterLevel;
-    float sandEndHeight = uWaterLevel + 0.4; // Sand is fully transitioned in by this height
+    float sandEndHeight = uWaterLevel + 1.4; // Sand is fully transitioned in by this height
     float sandFactor = smoothstep(sandStartHeight, sandEndHeight, csm_vPositionW.y);
     baseColor = mix(baseColor, uGrassColor, sandFactor);
 
     // Add grass to the higher areas of the terrain (above the sand)
     // Grass starts transitioning in where sand might still be fully present, effectively layering over it.
-    float grassStartHeight = 3.8;
-    float grassEndHeight = max(uWaterLevel + 4.6, 3.0); // Ensure grass has a reasonable transition range
+    float grassStartHeight = 4.9;
+    float grassEndHeight = max(uWaterLevel + grassStartHeight, 8.0); // Ensure grass has a reasonable transition range
     float grassFactor = smoothstep(grassStartHeight, grassEndHeight, csm_vPositionW.y);
     baseColor = mix(baseColor, vec3(1, 1, 1), grassFactor);
     

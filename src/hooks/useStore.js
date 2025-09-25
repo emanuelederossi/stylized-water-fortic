@@ -2,10 +2,10 @@ import { create } from "zustand"
 
 export const useStore = create((set) => ({
   ready: false,
-  waterLevel: 2.4,
-  waveSpeed: 0.5,
-  waveAmplitude: 0.1,
-  foamDepth: 0.01,
+  waterLevel: 0.5,
+  waveSpeed: 0.7,
+  waveAmplitude: 0.2,
+  foamDepth: 0.12,
   audioEnabled: false,
   interiorOpen: false,
   setInteriorOpen: (open) => set(() => ({ interiorOpen: open })),
