@@ -25,14 +25,6 @@ function App() {
       <Loading />
       <Suspense>
         <div className={clsx(s.transition, { [s.show]: ready })}>
-          <Modal
-            isOpen={open}
-            onClose={() => {
-              useStore.setState({ interiorOpen: false })
-            }}
-          >
-            <Interior />
-          </Modal>
           <Leva hidden={!ready || !showLeva} />
           <KeyboardControls
             map={[
