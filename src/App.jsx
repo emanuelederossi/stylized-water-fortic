@@ -4,19 +4,16 @@ import { Canvas } from "@react-three/fiber"
 import { AdaptiveDpr, KeyboardControls } from "@react-three/drei"
 import { Leva } from "leva"
 
-import { Interior } from "./components/Interior"
 import { Experience } from "./components/Experience"
 import { Loading } from "./ui/Loading"
 
 import { useStore } from "./hooks/useStore"
 
 import s from "./ui/ui.module.scss"
-import Modal from "./components/Modal"
 import { CameraAndKeyControlsEvent } from "./components/Controls"
 
 function App() {
   const ready = useStore((state) => state.ready)
-  const open = useStore((state) => state.interiorOpen)
 
   const showLeva = window.location.hash === "#debug"
 
