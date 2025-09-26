@@ -32,5 +32,6 @@ export function CameraAndKeyControlsEvent() {
       minDistance={10}
       makeDefault
     />
+    // <PointerLockControls />
   )
 }

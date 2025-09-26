@@ -30,7 +30,7 @@ export const Water = () => {
     COLOR_BASE_FAR: { value: "#0048b4", label: "Far" },
     WATER_LEVEL: {
       value: waterLevel,
-      min: 0.5,
+      min: 0,
       max: 5.0,
       step: 0.1,
       label: "Water Level"
