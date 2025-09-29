@@ -39,13 +39,13 @@ function App() {
               <CameraAndKeyControlsEvent />
               <Experience />
               <AdaptiveDpr pixelated />
-              <EffectComposer>
+              {/* <EffectComposer>
                   <DepthOfField
                     focusDistance={0} // where to focus
                     focalLength={0.2} // focal length
                     bokehScale={3} // bokeh size
                   />
-              </EffectComposer>
+              </EffectComposer> */}
             </Canvas>
           </KeyboardControls>
         </div>
