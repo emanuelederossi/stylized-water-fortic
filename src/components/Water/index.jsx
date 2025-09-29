@@ -26,8 +26,8 @@ export const Water = () => {
     TEXTURE_SIZE,
     FOAM_DEPTH
   } = useControls("Water", {
-    COLOR_BASE_NEAR: { value: "#4c86be", label: "Near" },
-    COLOR_BASE_FAR: { value: "#0048b4", label: "Far" },
+    COLOR_BASE_NEAR: { value: "#07335c", label: "Near" },
+    COLOR_BASE_FAR: { value: "#001e4b", label: "Far" },
     WATER_LEVEL: {
       value: waterLevel,
       min: 0,

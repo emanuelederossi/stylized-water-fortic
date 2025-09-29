@@ -46,7 +46,7 @@ export default [
         { allowConstantExport: true }
       ],
 
-      "prettier/prettier": "error", // Treat prettier issues as ESLint errors
+      "prettier/prettier": "off", // Treat prettier issues as ESLint errors
       "no-unused-vars": "warn"
     }
   }

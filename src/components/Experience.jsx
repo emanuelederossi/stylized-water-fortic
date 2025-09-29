@@ -6,18 +6,18 @@ import { Scene } from "./Scene"
 export const Experience = () => {
   // Interactive color parameters
   const { BACKGROUND } = useControls("Sky", {
-    BACKGROUND: { value: "#86c2eb", label: "Background" }
+    BACKGROUND: { value: "#fffff4", label: "Background" }
   })
 
   return (
     <>
       <Environment preset="forest" environmentIntensity={0.5} />
-      <ambientLight intensity={1.0} />
+      <ambientLight intensity={2.0} />
 
       <directionalLight
         position={[13, 5, 5]}
         castShadow
-        intensity={2.5}
+        intensity={2}
         shadow-mapSize={[1024, 1024]}
       >
         <orthographicCamera
@@ -33,7 +33,6 @@ export const Experience = () => {
 
       <color attach="background" args={[BACKGROUND]} />
       <fog attach="fog" args={[BACKGROUND, 400, 500]} />
-
       <Scene />
     </>
   )

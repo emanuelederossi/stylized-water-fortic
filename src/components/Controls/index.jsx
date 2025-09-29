@@ -1,4 +1,5 @@
-import { CameraControls, useKeyboardControls } from "@react-three/drei"
+import { CameraControls } from "@react-three/drei"
+import { useKeyboardControls } from "./keyboardControls"
 import { useFrame } from "@react-three/fiber"
 
 export function CameraAndKeyControlsEvent() {

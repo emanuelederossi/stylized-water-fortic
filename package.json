@@ -10,14 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.6",
-    "@react-three/fiber": "^8.17.8",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
+    "@react-three/postprocessing": "^2.16.3",
     "@types/three": "^0.169.0",
     "clsx": "^2.1.1",
     "leva": "^0.9.35",
+    "postprocessing": "^6.37.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "three": "^0.172.0",
+    "three": "^0.180.0",
     "three-custom-shader-material": "^6.3.0",
     "three-stdlib": "^2.36.0",
     "zustand": "^5.0.0"

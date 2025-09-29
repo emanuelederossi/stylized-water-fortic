@@ -10,6 +10,7 @@ import { useStore } from "../../hooks/useStore"
 import vertexShader from "./shaders/vertex.glsl"
 import fragmentShader from "./shaders/fragment.glsl"
 
+
 export function Terrain() {
   // Global states
   const waterLevel = useStore((state) => state.waterLevel)
@@ -19,13 +20,41 @@ export function Terrain() {
 
   // Load model
   const { nodes } = useGLTF("/models/baselow.glb")
+  const grassTextture = {
+    normal: useMemo(() => new THREE.TextureLoader().load("/textures/grass/normal.png", ), []),
+    displacement: useMemo(() => new THREE.TextureLoader().load("/textures/grass/displacement.tiff"), []),
+    base: useMemo(() => new THREE.TextureLoader().load("/textures/grass/base.jpg"), []),
+    ao  : useMemo(() => new THREE.TextureLoader().load("/textures/grass/ao.jpg"), []),
+    roughness  : useMemo(() => new THREE.TextureLoader().load("/textures/grass/rough.jpg"), []), 
+    metalness  : useMemo(() => new THREE.TextureLoader().load("/textures/grass/metal.jpg"), [])
+  }
+
+  const repeat = 100
+
+  grassTextture.normal.wrapS = grassTextture.normal.wrapT = THREE.RepeatWrapping
+  grassTextture.normal.repeat.set(repeat, repeat)
+
+  grassTextture.displacement.wrapS = grassTextture.displacement.wrapT = THREE.RepeatWrapping
+  grassTextture.displacement.repeat.set(repeat, repeat)
+
+  grassTextture.base.wrapS = grassTextture.base.wrapT = THREE.RepeatWrapping
+  grassTextture.base.repeat.set(repeat, repeat)
+
+  grassTextture.ao.wrapS = grassTextture.ao.wrapT = THREE.RepeatWrapping
+  grassTextture.ao.repeat.set(repeat, repeat)
+
+  grassTextture.roughness.wrapS = grassTextture.roughness.wrapT = THREE.RepeatWrapping
+  grassTextture.roughness.repeat.set(repeat, repeat)
+
+  grassTextture.metalness.wrapS = grassTextture.metalness.wrapT = THREE.RepeatWrapping
+  grassTextture.metalness.repeat.set(repeat, repeat)
 
   // Interactive color parameters
   const { SAND_BASE_COLOR, GRASS_BASE_COLOR, UNDERWATER_BASE_COLOR } =
     useControls("Terrain", {
       SAND_BASE_COLOR: { value: "#ff9900", label: "Sand" },
-      GRASS_BASE_COLOR: { value: "#819d24", label: "Grass" },
-      UNDERWATER_BASE_COLOR: { value: "#205200", label: "Underwater" }
+      GRASS_BASE_COLOR: { value: "#2f8323", label: "Grass" },
+      UNDERWATER_BASE_COLOR: { value: "#005956", label: "Underwater" }
     })
 
   // Convert color hex values to Three.js Color objects
@@ -40,11 +69,10 @@ export function Terrain() {
 
   // Material
   const materialRef = useRef()
-
+  
   // Update shader uniforms whenever control values change
   useEffect(() => {
     if (!materialRef.current) return
-
     materialRef.current.uniforms.uGrassColor.value = GRASS_COLOR
     materialRef.current.uniforms.uUnderwaterColor.value = UNDERWATER_COLOR
     materialRef.current.uniforms.uWaterLevel.value = waterLevel
@@ -87,10 +115,20 @@ export function Terrain() {
           ref={materialRef}
           baseMaterial={THREE.MeshStandardMaterial}
           color={SAND_BASE_COLOR}
-          metalness={0.5}
-          roughness={1}
+         
+          normalMap={grassTextture.normal}
+          displacementMap={grassTextture.displacement}
+          // map={grassTextture.base}
+          aoMap={grassTextture.ao}
+          roughnessMap={grassTextture.roughness}
+          metalnessMap={grassTextture.metalness}
+          normalScale={new THREE.Vector2(0.15, 0.15)}
+          aoMapIntensity={5.0}
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
+          displacementScale={10}
+          metalness={1.0}
+          roughness={1.0}
           uniforms={{
             uTime: { value: 0 },
             uGrassColor: { value: GRASS_COLOR },
