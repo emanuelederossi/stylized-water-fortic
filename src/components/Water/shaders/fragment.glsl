@@ -61,7 +61,7 @@ void main() {
     // Generate additional noise for waves
     float noiseWaves = snoise(csm_vUv * textureSize + sin(uTime * -0.1));
     noiseWaves = noiseWaves * 0.5 + 0.5;
-    vec3 colorWaves = vec3(noiseWaves);
+    vec3 colorWaves = vec3(noiseWaves * 0.65);
 
     // Apply smoothstep for wave thresholding
     float threshold = 0.6 + 0.01 * sin(uTime * 2.0);   // threshold for waves oscillates between 0.6 and 0.61
