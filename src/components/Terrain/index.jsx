@@ -126,7 +126,7 @@ export function Terrain() {
           aoMapIntensity={5.0}
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
-          displacementScale={10}
+          displacementScale={0.1}
           metalness={1.0}
           roughness={1.0}
           uniforms={{
